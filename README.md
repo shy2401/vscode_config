@@ -9,7 +9,7 @@
 ### 安装方法
 
 如下图，在插件管理中搜索安装对应的插件
-![vscode插件管理](./assert/插件安装方法.jpg)
+![vscode插件管理](./asset/插件安装方法.jpg)
 
 ### 管理类插件
 
@@ -26,7 +26,7 @@
 链接远程服务器，在服务器上进行开发。
 2. 配置教程
 按下图编号顺序进行配置
-![remote_SSH配置](./assert/remote_SSH配置.jpg)
+![remote_SSH配置](./asset/remote_SSH配置.jpg)
 
 ### GitLens — Git supercharged
 
@@ -34,7 +34,7 @@
 git版本管理插件，可以显示每一行是那一次提交以及修改记录
 2. 配置教程
 默认配置，插件功能位置如下
-![gitLen](./assert/gitLen位置.jpg)
+![gitLen](./asset/gitLen位置.jpg)
 
 ## C++插件
 
@@ -78,6 +78,30 @@ C++代码补全，调试，代码浏览功能
     ```SHELL
     pip install compiledb   # 需要先安装compiledb工具
     compiledb -nf make
+    ```
+
+    * 需要在工程目录下的.vscode/c_cpp_properties.json做对应修改
+
+    ```JSON
+    {
+        "configurations": [
+            {
+                "name": "Linux",
+                "includePath": [
+                    "${workspaceFolder}/**",
+                    "/mnt/dev_ip31/prebuilts/rootfs_6.0/yunos6.0/rootfs4map"            # 编译链目录
+                ],
+                "defines": [],
+                "compilerPath": "/mnt/dev_ip31/toolchain/gcc-linaro-arm-linux-gnueabihf-4.9-glibc-2.20/bin/arm-linux-gnueabihf-g++",  # 编译工具
+                "cStandard": "c11",
+                "cppStandard": "c++17",
+                "intelliSenseMode": "clang-x64",
+                "configurationProvider": "vector-of-bool.cmake-tools",
+                "compileCommands": "${workspaceFolder}/build/compile_commands.json"         # 生成路径compile_commands.json，正常会自动添加
+            }
+        ],
+        "version": 4
+    }
     ```
 
 ### C++ Intellisense（非必要）
@@ -167,7 +191,7 @@ cmake 插件，build自动生成makefile
 1. 功能介绍
 嵌套括号使用不同颜色显示，减少括号不成对的问题。
 效果图
-![效果图](./assert/BracketPairColorizer.jpg)
+![效果图](./asset/BracketPairColorizer.jpg)
 2. 配置
 默认配置
 
@@ -176,7 +200,7 @@ cmake 插件，build自动生成makefile
 1. 功能介绍
 高亮当前缩进快
 效果图
-![Indenticator](./assert/Indenticator.jpg)
+![Indenticator](./asset/Indenticator.jpg)
 2. 配置
 默认配置
 
@@ -184,7 +208,7 @@ cmake 插件，build自动生成makefile
 
 1. 功能介绍
 显示当前打开文件大小
-![filesize](./assert/filesize.jpg)
+![filesize](./asset/filesize.jpg)
 2. 配置
 默认配置
 
@@ -292,5 +316,29 @@ markdown语法分析
         "YUNOS_COMPILER":"/mnt/dev_ip31/toolchain/gcc-linaro-arm-linux-gnueabihf-4.9-glibc-2.20"
     },
     "terminal.integrated.cwd": "/home/sy134235/workspace/map_caf2_addon/build",
+}
+```
+
+## c_cpp_properties.json
+
+```JSON
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/mnt/dev_ip31/prebuilts/rootfs_6.0/yunos6.0/rootfs4map"
+            ],
+            "defines": [],
+            "compilerPath": "/mnt/dev_ip31/toolchain/gcc-linaro-arm-linux-gnueabihf-4.9-glibc-2.20/bin/arm-linux-gnueabihf-g++",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        }
+    ],
+    "version": 4
 }
 ```
